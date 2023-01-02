@@ -3,7 +3,7 @@ import io from "socket.io-client"
 import Login from './components/Login';
 import Chat from "./components/Chat"
 import {BrowserRouter as Router , Routes , Route} from 'react-router-dom'
-const socket = io.connect("http://localhost:3001");
+const socket = io.connect("https://chatbeta.onrender.com");
 
 function App() {
   return (
