@@ -1,38 +1,223 @@
-.App {
+body{
+  margin: 0;
+  padding: 0;
+  background-color: #0d92f9;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+.container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+p{
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  padding: 10%;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: gray;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-track{
+  background-color: #fff;
+  padding: 10%;
+}
+
+#me{
+  background-color: #00CB34;
+}
+
+/* ------------------------------login---------------------------- */
+
+.div-login-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 80%;
+  align-items: flex-start;
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+  transition: box-shadow 0.5s;
+}
+
+.div-login-form:hover{
+  box-shadow: 0 0 40px 10px rgba(0,0,0,0.3);
+}
+
+.login-form{
+  width: 100%;
+  padding: 10%;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.login-form input{
+  margin: 8% 0;
+  display: block;
+  width: 100%;
+  font-family: sans-serif;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+  outline: none;
+  font-size: 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.login-form button{
+  background-color: transparent;
+  font-size: 15px;
+  text-align: center;
+  display: inline-block;
+  padding: 2% 10%;
+  border-radius: 20px;
+  transition: 500ms;
+  outline: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.login-form button:hover{
+  transition: 400ms;
+  cursor: pointer;
+  background-color: #0d92f9;
+  border: 1px solid #0d92f9;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+/* --------------------------------------------contacts-------------------------------------- */
+
+.main-contacts{
+  background-color: #0d92f9;
+  box-sizing: border-box;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.contacts-header{
+  text-align: center;
+  padding: 2% 0;
+  color: #fff;
+  font-size: 20px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+}
+
+.contacts{
+  padding: 2% 10%;
+}
+
+/* ---------------------------------------------chatting-------------------------------------- */
+
+.main-chatting{
+  display: grid;
+  grid-template-columns: 20% 80%;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  color: black;
+}
+
+.chatting-div{
+  position: relative;
+}
+
+/* ------------------------------------chatting-header---------------------------------- */
+
+.message-header{
+  width: 100%;
+  text-align: right;
+  padding: 0.5% 3%;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------message-block---------------------------------- */
+
+.message-block{
+  height: 90vh;
+  padding: 0.5%;
+  box-sizing: border-box;
+}
+
+.message{
+  padding: 1%;
+  word-wrap: break-word;
+}
+
+
+.message-p{
+  display: inline-block;
+  width: auto;
+  max-width: 40%;
+  color: white;
+  background-color: #0070FF;
+  word-wrap: break-word;
+  padding: 0.5%;
+  border-radius: 10px 10px 10px 0;
+}
+
+.message-author{
+  padding: 0 0 0.2% 0;
+}
+
+
+.message-date p{
+  color: gray;
+  font-size: 80%;
+}
+
+/* ---------------------------------------message-form---------------------------------- */
+
+.message-form{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.ins-message-form{
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  /* height: 30vh; */
+  max-height: 30vh;
+  padding: 0.5% 0.5% 1% 0.5%;
+  background-color: #f5f5f5;
+}
+
+.message-form textarea{
+  align-self: end;
+  background-color: transparent;
+  color: black;
+  width: 92%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  word-break:break-all;
+  resize: none;
+  max-height: 30vh;
+  bottom: 0;
+
+}
+
+.message-form button{
+  position: absolute;
+  right: 2%;
+  font-size: 18px;
+  background-color: transparent;
+  border: none;
+  transition: color 300ms;
+  align-self: end;
+}
+
+.message-form button:hover{
+  cursor: pointer;
+  color: #0d92f9;
 }
