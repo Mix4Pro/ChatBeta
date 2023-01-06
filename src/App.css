@@ -44,10 +44,8 @@ p{
 .div-login-form{
   display: flex;
   justify-content: center;
-  align-items: center;
   width: 40%;
   height: 80%;
-  align-items: flex-start;
   background-color: #fff;
   color: #000;
   border-radius: 10px;
@@ -66,10 +64,9 @@ p{
 
 .login-form input{
   margin: 8% 0;
-  display: block;
-  width: 100%;
+  width: 94%;
   font-family: sans-serif;
-  padding: 10px;
+  padding: 2.5%;
   border-radius: 10px;
   border: 1px solid black;
   outline: none;
@@ -143,7 +140,6 @@ p{
 
 .message-block{
   height: 90vh;
-  padding: 0.5%;
   box-sizing: border-box;
 }
 
@@ -160,7 +156,7 @@ p{
   color: white;
   background-color: #0070FF;
   word-wrap: break-word;
-  padding: 0.5%;
+  padding: 0.8%;
   border-radius: 10px 10px 10px 0;
 }
 
@@ -220,4 +216,47 @@ p{
 .message-form button:hover{
   cursor: pointer;
   color: #0d92f9;
+}
+
+
+/* ------------------------------------------800 px--------------------------------------------*/
+
+/* --------------------------------login------------------------- */
+
+@media screen and (max-width:800px){
+  .div-login-form{
+    width: 100%;
+    height: 100%;
+  }
+  
+  .container{
+    padding: 0;
+  }
+  
+  .login-form{
+    width: 100%;
+  } 
+}
+
+
+@media screen and (max-width: 550px) {
+  .login-form h1{
+    font-size: 25px;
+  }
+  .login-form input{
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .login-form h1{
+    font-size: 20px;
+  }
+  .login-form input{
+    font-size: 10px;
+  }
+
+  .login-form button{
+    font-size: 12px;
+  }
 }
