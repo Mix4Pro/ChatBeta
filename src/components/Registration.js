@@ -18,7 +18,7 @@ function Registration() {
     }
     const RegUser = async (e) => {
         try{
-            await axios.post('https://api.render.com/deploy/srv-cephp8en6mpkfa0t1rvg?key=6LhBFoaZlQw/registration' , {
+            await axios.post('https://chatbeta.onrender.com/registration' , {
                 username , password
             })
             navigate('/chat')
