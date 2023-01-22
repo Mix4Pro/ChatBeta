@@ -1,36 +1,40 @@
 import React, { Fragment, useState } from 'react'
+// import {Link} from "react-router-dom"
+import axios from "axios"
+import {Link} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import {ToastContainer,toast} from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 
 function Login({socket}) {
   const navigate = useNavigate()
   const [username,setUsername] = useState('')
-
-    const sendUser = async () =>{
-      if(username !== ''){
-        await socket.emit("login", username)
-
-        navigate('/chat', {
-          state: {
-            username,
-          }
-        })
-      }
-    }
-
+  const [password, setPassword] = useState('')
+  const toastOptions = {
+    className: "toast",
+    position: 'bottom-right',
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+  }
     const onSubmitForm = async (e)=>{
-      
       try{
-        const response = await fetch("http://localhost:3001", {
-          method: "POST",
-          headers: {"Content-type": "application/json"}
-        })
-        
-        console.log(response)
-      }catch(e){
-        console.log(e)
+        if(username !== '' && password !== ''){
+          await socket.emit("login", username)
+          
+          await axios.post('http://localhost:3001' , {
+            username , password
+          })
+          navigate('/chat',{
+            username: username
+          })
+        }
+        }catch(e){
+          console.log(e)
+          toast.error("Username or Password is incorrect.", toastOptions)
+        }
+        e.preventDefault()
       }
-      e.preventDefault  ()
-    }
   return (
     <Fragment>
       <div className='div-login-form'>
@@ -41,19 +45,23 @@ function Login({socket}) {
               type='text' 
               placeholder="Username..." 
               onChange={(e)=>{setUsername(e.target.value)}}
-              onKeyDown={(e)=>{
-                if(e.key === "Enter"){
-                    sendUser()
-                }
-              }}
             />
-            
-            <button onClick={sendUser}>Log in</button>
+
+            <input 
+              type='password' 
+              placeholder="Password..." 
+              onChange={(e)=>{setPassword(e.target.value)}}
+            />
+            <Link type='button' onClick={onSubmitForm} username={username}>Log in</Link>
+
           </form>
+          <Link to="/registration">Sign Up</Link>
         </div>
+      <ToastContainer />
       </div>
     </Fragment>
   )
 }
+
 
 export default Login
