@@ -139,7 +139,7 @@ class Chat extends Component {
                     new Date(Date.now()).getMinutes(),
                }
                let {author,message,date} = CurrentMessage
-               await axios.post('http://localhost:3001/chat-insert-message', {
+               await axios.post('https://chatbeta.onrender.com/chat-insert-message', {
                 author,message,date   
                })
                this.props.socket.emit('send_message', CurrentMessage)
@@ -160,9 +160,9 @@ class Chat extends Component {
 
     async componentWillUnmount(){
         try{
-            let userNameFromData = await axios.get("http://localhost:3001/chat-get-username")
+            let userNameFromData = await axios.get("https://chatbeta.onrender.com/chat-get-username")
             
-            let messagesFromData = await axios.get('http://localhost:3001/chat-get-messages')
+            let messagesFromData = await axios.get('https://chatbeta.onrender.com/chat-get-messages')
 
             console.log(messagesFromData)
             this.setState({
