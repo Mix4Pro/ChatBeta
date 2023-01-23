@@ -19,10 +19,11 @@ function Login({socket}) {
   }
     const onSubmitForm = async (e)=>{
       try{
+        console.log(socket)
         if(username !== '' && password !== ''){
           await socket.emit("login", username)
           
-          await axios.post('https://chatbeta.onrender.com/' , {
+          await axios.post('https://chatbeta.onrender.com' , {
             username , password
           })
           navigate('/chat',{
