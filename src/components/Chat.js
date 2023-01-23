@@ -160,9 +160,9 @@ class Chat extends Component {
 
     async componentWillUnmount(){
         try{
-            let userNameFromData = await axios.get("https://api.render.com/deploy/srv-cf6kl6hmbjsmchf3mtk0?key=l7Q_X5uscUA/chat-get-username")
+            let userNameFromData = await axios.get("https://chatbeta.onrender.com/chat-get-username")
             
-            let messagesFromData = await axios.get('https://api.render.com/deploy/srv-cf6kl6hmbjsmchf3mtk0?key=l7Q_X5uscUA/chat-get-messages')
+            let messagesFromData = await axios.get('https://chatbeta.onrender.com/chat-get-messages')
 
             console.log(messagesFromData)
             this.setState({
