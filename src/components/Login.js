@@ -22,7 +22,7 @@ function Login({socket}) {
         if(username !== '' && password !== ''){
           await socket.emit("login", username)
           
-          await axios.post('https://chatbeta.onrender.com' , {
+          await axios.post('https://api.render.com/deploy/srv-cf6kl6hmbjsmchf3mtk0?key=l7Q_X5uscUA' , {
             username , password
           })
           navigate('/chat',{

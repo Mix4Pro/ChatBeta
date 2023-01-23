@@ -4,7 +4,7 @@ import Login from './components/Login';
 import Chat from "./components/Chat"
 import {BrowserRouter as Router , Routes , Route} from 'react-router-dom'
 import Registration from './components/Registration';
-const socket = io.connect("https://chatbeta.onrender.com");
+const socket = io.connect("https://api.render.com/deploy/srv-cf6kl6hmbjsmchf3mtk0?key=l7Q_X5uscUA");
 
 function App() {
   return (
