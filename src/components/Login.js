@@ -25,7 +25,7 @@ function Login({socket}) {
 
           console.log("POST IS SENDING")
           
-          await axios.post('https://chatbeta.onrender.com' , {
+          await axios.post('https://chatbeta.onrender.com/' , {
             username , password
           })
 
