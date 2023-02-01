@@ -21,6 +21,8 @@ function Registration() {
             await axios.post('https://chatbeta.onrender.com/registration' , {
                 username , password
             })
+
+            localStorage.setItem("username",username)
             navigate('/chat')
         }catch(e){
             console.log(e)
