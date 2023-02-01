@@ -46,13 +46,7 @@ class Chat extends Component {
         }
     }
 
-    componentGracefulUnmount(){
-            this.setState({
-                username: localStorage.getItem('username')
-            })
-    }
-
-    async componentWillUnmount(){
+    async componentWillMount(){
         try{    
             console.log(this.state.username)
             console.log("Getting username")
@@ -63,6 +57,10 @@ class Chat extends Component {
             // this.setState({
             //     username: userNameFromData
             // })
+
+            this.setState({
+                username: localStorage.getItem('username')
+            })
 
             console.log("Username is gotten")
             
