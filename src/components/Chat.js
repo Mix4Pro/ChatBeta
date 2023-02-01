@@ -29,18 +29,16 @@ class Chat extends Component {
                }
                this.inputField.current.value = ""
                let {author,message,date} = CurrentMessage
-               await axios.post('https://chatbeta.onrender.com/chat-insert-message', {
+               await axios.post('https://chatbeta.onrender.com/chat-insert-message', {  
                 author,message,date   
                })
                this.props.socket.emit('send_message', CurrentMessage)
    
                console.log(this.props.socket)
-               // this.setMesasges([...this.messages,CurrentMessage])
                this.setState({
                    messages: [...this.state.messages,CurrentMessage]
                })
                console.log(this.state.messages)
-               // this.setMessage('')
                this.setState({message: ''})
             }
         }catch(err){
@@ -50,9 +48,12 @@ class Chat extends Component {
 
     async componentWillUnmount(){
         try{
-
+            console.log(this.state.username)
             console.log("Getting username")
-            let userNameFromData = await axios.get("https://chatbeta.onrender.com/chat-get-username")
+            // let userNameFromData = await axios.get("https://chatbeta.onrender.com/chat-get-username")
+
+            let userNameFromData = localStorage.getItem('username')
+            console.log(userNameFromData)
 
             console.log("Username is gotten")
             
@@ -62,7 +63,7 @@ class Chat extends Component {
 
             console.log(messagesFromData)
             this.setState({
-                username: userNameFromData.data
+                username: userNameFromData
             })
             
             this.setState({

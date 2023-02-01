@@ -30,9 +30,14 @@ function Login({socket}) {
           })
 
           console.log("POST IS SENT")
-          navigate('/chat',{
-            username: username
-          })
+
+          localStorage.setItem("username",username)
+
+          // navigate('/chat',{
+          //   username: username
+          // })
+
+          navigate('/chat')
         }
         }catch(e){
           console.log(e)
