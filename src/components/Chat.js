@@ -54,6 +54,7 @@ class Chat extends Component {
 
     async componentWillMount(){
         try{    
+
             console.log(this.state.username)
             console.log("Getting username")
             // let userNameFromData = await axios.get("https://chatbeta.onrender.com/chat-get-username")
