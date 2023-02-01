@@ -46,18 +46,23 @@ class Chat extends Component {
         }
     }
 
+    componentGracefulUnmount(){
+            this.setState({
+                username: localStorage.getItem('username')
+            })
+    }
+
     async componentWillUnmount(){
         try{    
             console.log(this.state.username)
             console.log("Getting username")
             // let userNameFromData = await axios.get("https://chatbeta.onrender.com/chat-get-username")
+            // let userNameFromData = localStorage.getItem('username')
+            // console.log(userNameFromData)
 
-            let userNameFromData = localStorage.getItem('username')
-            console.log(userNameFromData)
-
-            this.setState({
-                username: userNameFromData
-            })
+            // this.setState({
+            //     username: userNameFromData
+            // })
 
             console.log("Username is gotten")
             
