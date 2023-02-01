@@ -2,12 +2,14 @@
 import React, { Component} from 'react';
 import ReactScrollableFeed from "react-scrollable-feed";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 class Chat extends Component {
     constructor(props){
         super(props);
         this.sendMessage = this.sendMessage.bind(this);
         this.inputField = React.createRef();
+        this.signOut = this.signOut.bind(this)
     }
 
     state = {
@@ -46,6 +48,10 @@ class Chat extends Component {
         }
     }
 
+    signOut(){
+        localStorage.removeItem("username")
+    }
+
     async componentWillMount(){
         try{    
             console.log(this.state.username)
@@ -63,6 +69,8 @@ class Chat extends Component {
             })
 
             console.log("Username is gotten")
+
+            console.log(typeof this.state.username)
             
             let messagesFromData = await axios.get('https://chatbeta.onrender.com/chat-get-messages')
 
@@ -94,9 +102,11 @@ class Chat extends Component {
                     </div>
                 </div>
                 {
-                    this.state.username !== undefined || this.state.userNameFromData !== '' ? (
+                    typeof this.state.username == "string" ? (
                         <div className='chatting-div'>
                             <div className='message-header'>
+                                <Link to='/' onClick={this.signOut}>Sign Out</Link>
+
                                 <p>Username: {this.state.username}</p>
                             </div>
 
