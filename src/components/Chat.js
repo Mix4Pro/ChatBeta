@@ -3,8 +3,6 @@ import React, { Component} from 'react';
 import ReactScrollableFeed from "react-scrollable-feed";
 import axios from "axios";
 
-console.log("THIS IS CHAT") 
-
 class Chat extends Component {
     constructor(props){
         super(props);
@@ -41,6 +39,7 @@ class Chat extends Component {
                })
                console.log(this.state.messages)
                this.setState({message: ''})
+               console.log(this.state.username)
             }
         }catch(err){
             console.log(err.message)
@@ -56,6 +55,10 @@ class Chat extends Component {
             let userNameFromData = localStorage.getItem('username')
             console.log(userNameFromData)
 
+            this.setState({
+                username: userNameFromData
+            })
+
             console.log("Username is gotten")
             
             let messagesFromData = await axios.get('https://chatbeta.onrender.com/chat-get-messages')
@@ -63,9 +66,6 @@ class Chat extends Component {
             console.log("messages are gotten")
 
             console.log(messagesFromData)
-            this.setState({
-                username: userNameFromData
-            })
             
             this.setState({
                 messages: messagesFromData.data
