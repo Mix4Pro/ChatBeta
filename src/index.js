@@ -4,7 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-document.body.style.height = window.innerHeight * 0.01
+document.body.style.height = `${window.innerHeight * 0.01} px`
 console.log(window.innerHeight)
 root.render(
   <React.StrictMode>
