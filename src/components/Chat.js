@@ -3,6 +3,7 @@ import React, { Component} from 'react';
 import ReactScrollableFeed from "react-scrollable-feed";
 import axios from "axios";
 
+console.log("THIS IS CHAT") 
 
 class Chat extends Component {
     constructor(props){
@@ -47,7 +48,7 @@ class Chat extends Component {
     }
 
     async componentWillUnmount(){
-        try{
+        try{    
             console.log(this.state.username)
             console.log("Getting username")
             // let userNameFromData = await axios.get("https://chatbeta.onrender.com/chat-get-username")
@@ -90,7 +91,7 @@ class Chat extends Component {
                     </div>
                 </div>
                 {
-                    this.state.username !== undefined ? (
+                    this.state.username !== undefined || this.state.userNameFromData !== '' ? (
                         <div className='chatting-div'>
                             <div className='message-header'>
                                 <p>Username: {this.state.username}</p>
