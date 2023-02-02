@@ -172,7 +172,7 @@ p{
 /* --------------------------------------message-block---------------------------------- */
 
 .message-block{
-  height: 90vh;
+  height: 90svh;
   box-sizing: border-box;
 }
 
