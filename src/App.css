@@ -322,7 +322,7 @@ p{
 
   .message-form button{
     height: 100%;
-    font-size: 25px;
+    font-size: 5svh;
   }
 }
 
