@@ -11,7 +11,7 @@ class Chat extends Component {
         this.inputField = React.createRef();
         this.signOut = this.signOut.bind(this)
     }
-
+    
     state = {
         username: '',
         message: '',
