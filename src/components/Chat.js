@@ -20,7 +20,7 @@ class Chat extends Component {
 
     async sendMessage(){
         try{
-            if(this.message !== ''){
+            if(this.state.message !== ''){
                 const CurrentMessage = {
                     author: this.state.username,
                     message: this.state.message,

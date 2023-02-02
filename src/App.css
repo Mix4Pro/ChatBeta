@@ -178,7 +178,7 @@ p{
 }
 
 .message{
-  padding: 0 0 0 1%;
+  padding: 0.5% 0 1% 1%;
   word-break: break-all;
 }
 
@@ -286,7 +286,7 @@ p{
 
   .message-form textarea{
     height: 5svh;
-    /* line-height: 5svh; */
+    line-height: 5svh;
     resize: none;
   }
 
@@ -302,7 +302,7 @@ p{
   }
 
   .message{
-    padding: 0 0 0 3%;
+    padding: 2% 0 2% 3%;
   }
 
   .message-p{
@@ -324,10 +324,6 @@ p{
     height: 100%;
     font-size: 20px;
   }
-
-  .message-block{
-    margin-top: 2%;
-  }
 }
 
 @media screen and (max-width: 450px) {
@@ -343,7 +339,7 @@ p{
   }
 
   .message{
-    padding: 0 0 0 3.5%;
+    padding: 2% 0 2% 3.5%;
   }
 
   .ins-message-form{
