@@ -172,8 +172,9 @@ p{
 /* --------------------------------------message-block---------------------------------- */
 
 .message-block{
-  height: 90svh;
+  height: 86.5svh;
   box-sizing: border-box;
+  margin-top: 1%;
 }
 
 .message{
@@ -285,7 +286,7 @@ p{
 
   .message-form textarea{
     height: 5svh;
-    line-height: 5svh;
+    /* line-height: 5svh; */
     resize: none;
   }
 
@@ -320,7 +321,12 @@ p{
   }
 
   .message-form button{
+    height: 100%;
     font-size: 20px;
+  }
+
+  .message-block{
+    margin-top: 2%;
   }
 }
 
