@@ -288,6 +288,7 @@ p{
     line-height: 5svh;
     resize: none;
   }
+
 }
 
 
@@ -316,6 +317,10 @@ p{
     height: 6svh;
     line-height: 5svh;
     resize: none;
+  }
+
+  .message-form button{
+    font-size: 20px;
   }
 }
 
