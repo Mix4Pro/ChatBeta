@@ -6,7 +6,7 @@ html,body{
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: #0d92f9;
+  background-color: #060A13;
   color: #fff;
   font-family: sans-serif;
   box-sizing: border-box;
@@ -15,16 +15,47 @@ html,body{
 
 .container{
   width: 100svw;
-  height: 100svh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   box-sizing: border-box;
+}
+
+.light{
+  background-color: #fff;
+  color: #000;
+  transition: 800ms;
+}
+
+.light input{
+  color: #000;
+}
+
+.light a{
+  color: #000;
+  text-align: center;
+}
+
+.dark{
+  background-color: #060A13;
+  color: rgb(213, 213, 213);
+  transition: 800ms;
+}
+
+.dark input{
+  color: rgb(213, 213, 213);
+}
+
+.dark a{
+  color: rgb(213, 213, 213);
+  text-align: center;
+}
+
+h2{
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  display: inline-block;
 }
 a{
   text-decoration: none;
-  color: #0070FF;
-  margin-top: 10px;
 }
 p{
   display: inline-block;
@@ -59,60 +90,95 @@ p{
 
 /* ------------------------------login---------------------------- */
 
-.div-login-form{
-  display: flex;
-  justify-content: center;
-  width: 40%;
-  height: 80%;
-  background-color: #fff;
-  color: #000;
-  border-radius: 10px;
-  transition: box-shadow 0.5s;
+.main-login-div{
+  height: 100svh;
+  box-sizing: border-box;
+  overflow-y: hidden;
 }
 
-.div-login-form:hover{
-  box-shadow: 0 0 40px 10px rgba(0,0,0,0.3);
+.login-header{
+  display: grid;
+  grid-template-columns: 0.1fr 1fr 0.1fr;
+  padding: 2% 2%;
+  align-items: center;
+  margin-bottom: 5%;
 }
 
-.login-form{
+.btn-sign-up{
+  font-size: 15px;
+}
+
+.theme-div{
   width: 100%;
-  padding: 10%;
   text-align: center;
 }
 
-.login-form input{
-  margin: 4% 0;
-  width: 94%;
-  font-family: sans-serif;
-  padding: 2.5%;
-  border-radius: 10px;
-  border: 1px solid #000;
-  outline: none;
-  font-size: 15px;
-}
-
-.login-form form a {
-  background-color: transparent;
-  font-size: 15px;
-  text-align: center;
+.theme{
   display: inline-block;
-  padding: 2% 10%;
-  border-radius: 20px;
-  transition: 500ms;
+  background: transparent;
+  color: rgb(213, 213, 213);
+  border: none;
+  padding: 0;
+  margin: 0;
+  /* text-align: left; */
+}
+
+.login-form-div{
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  height: auto;
+}
+
+.login-form-inner-div{
+  text-align: center;
+  width: 30svw; 
+  border: 1px solid;
+  border-image: linear-gradient(to right, darkblue, darkorchid) 1;
+  padding: 5%;
+  box-sizing: border-box;
+  animation-name: border;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes border {
+  0%{
+    border-image: linear-gradient(to right, darkblue, darkorchid) 1;
+  }
+
+  50%{
+    border-image: linear-gradient(to right, darkorchid, darkblue) 1;
+  }
+  100%{
+    border-image: linear-gradient(to right, darkblue, darkorchid) 1;
+  }
+}
+
+.form{
+  margin-bottom: 20%;
+}
+
+.login-form-inp{
+  box-sizing: border-box;
+  width: 100%;
+  display: block;
+  margin: 10% 0;
+  padding: 2% 1%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid red;
   outline: none;
-  margin: 10% 0 5% 0;
-  border: 1px solid #000;
-  color: #000;
+  color: rgb(213, 213, 213);
+  transition: border-bottom 500ms;
 }
 
-.login-form form a:hover{
-  transition: 400ms;
-  cursor: pointer;
-  background-color: #0d92f9;
-  border: 1px solid #0070FF;
-  color: #fff;
+.login-form-inp:focus {
+  border-bottom: 1px solid #2152BE;
 }
 
+.btn-form{
+}
 
 /* --------------------------------------------contacts-------------------------------------- */
 
@@ -253,12 +319,13 @@ p{
 
 /* --------------------------------login------------------------- */
 
-@media screen and (max-width:800px){
-  .div-login-form{
-    border-radius: 0;
-    width: 100%;
-    height: 100%;
+@media screen and (max-width: 900px) {
+  .login-form-inner-div{
+    width: 50svw;
   }
+}
+
+@media screen and (max-width:800px){
   
   .container{
     padding: 0;
@@ -292,11 +359,26 @@ p{
 
 }
 
+@media screen and (max-width: 750px){
+  .login-form-inner-div{
+    width: 80svw;
+  }
+}
+
+@media screen and (max-width: 670px){
+  .login-header{
+    grid-template-columns: 0.1fr 0.8fr 0.1fr;
+  }
+}
+
 
 @media screen and (max-width: 550px) {
-  .login-form h1{
-    font-size: 25px;
+  .login-header{
+    grid-template-columns: 0.15fr 0.75fr 0.15fr;
   }
+  /* .login-form h2{
+    font-size: 25px;
+  } */
   .login-form input{
     font-size: 15px;
   }
@@ -327,8 +409,18 @@ p{
 }
 
 @media screen and (max-width: 450px) {
+  .login-header{
+    grid-template-columns: 0.03fr 0.8.7fr 0.15fr;
+  }
+  .theme{
+    font-size: 12px;
+  }
+  .login-header a{
+    font-size: 12px;
+    font-weight: bold;
+  }
   .login-form h1{
-    font-size: 20px;
+    font-size: 15px;
   }
   .login-form input{
     font-size: 15px;
