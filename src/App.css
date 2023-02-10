@@ -412,7 +412,8 @@ p{
 
 @media screen and (max-width: 450px) {
   .login-header{
-    grid-template-columns: 0.03fr 0.8.7fr 0.15fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
   }
   .theme{
     font-size: 12px;
