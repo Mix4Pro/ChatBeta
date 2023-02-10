@@ -2,6 +2,7 @@
 import React, { Component} from 'react';
 import ReactScrollableFeed from "react-scrollable-feed";
 import axios from "axios";
+import { FaMoon } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 class Chat extends Component {
@@ -10,12 +11,14 @@ class Chat extends Component {
         this.sendMessage = this.sendMessage.bind(this);
         this.inputField = React.createRef();
         this.signOut = this.signOut.bind(this)
+        this.changeTheme = this.changeTheme.bind(this)
     }
     
     state = {
         username: '',
         message: '',
-        messages: []
+        messages: [],
+        theme: true
     }
 
     async sendMessage(){
@@ -54,16 +57,11 @@ class Chat extends Component {
 
     async componentWillMount(){
         try{    
-
+            this.setState({
+                theme: (localStorage.getItem('theme') === 'true')
+            })
             console.log(this.state.username)
             console.log("Getting username")
-            // let userNameFromData = await axios.get("https://chatbeta.onrender.com/chat-get-username")
-            // let userNameFromData = localStorage.getItem('username')
-            // console.log(userNameFromData)
-
-            // this.setState({
-            //     username: userNameFromData
-            // })
 
             this.setState({
                 username: localStorage.getItem('username')
@@ -91,24 +89,43 @@ class Chat extends Component {
         }
     }
 
+    async changeTheme(){
+        await this.setState({
+          theme: !this.state.theme
+        })
+        localStorage.setItem('theme', this.state.theme)
+        if(this.state.theme === true){
+          document.body.style.background = '#fff'
+          console.log('white')
+        }else{
+          document.body.style.background = '#060A13'
+          console.log('dark')
+        }
+      }
+
     render() {
         return (
             <div className='main-chatting'>
-                <div className='main-contacts'>
+                {/* <div className={
+                    this.state.theme ? 'main-contacts c-light' : 'main-contacts c-dark'
+                }>
                     <div className='contacts-header'>
                         <p>Contacts</p>
                     </div>
                     <div className='contacts'>
                         <p className='contacts-name'>Beta Version XD</p>
                     </div>
-                </div>
+                </div> */}
                 {
                     typeof this.state.username == "string" ? (
-                        <div className='chatting-div'>
+                        <div className={
+                            this.state.theme ? 'chatting-div light' : 'chatting-div dark'
+                        }>
                             <div className='message-header'>
-                                <Link to='/' onClick={this.signOut}>Sign Out</Link>
-
+                                <button className='theme' onClick={this.changeTheme}><FaMoon style={{color: this.state.theme ? '#000' : '#fff'}}/></button>
                                 <p>Username: {this.state.username}</p>
+
+                                <Link to='/' onClick={this.signOut}>Sign Out</Link>
                             </div>
 
                             <div className='message-block'>
@@ -137,10 +154,15 @@ class Chat extends Component {
                             </div>
 
                             <div className='message-form'>
-                                <div className='ins-message-form'>
+                                <div className={
+                                    this.state.theme ? 'ins-message-form inp-light' : 'ins-message-form inp-dark'
+                                }>
                                     <textarea  
                                         placeholder='Message...' 
                                         rows="1"
+                                        className={
+                                            this.state.theme ? ' inp-light' : 'ins-message-form inp-dark'
+                                        }
                                         onChange={(e)=>{
                                             this.setState({
                                                 message: e.target.value
@@ -156,13 +178,15 @@ class Chat extends Component {
                                         ref={this.inputField}
                                     ></textarea>
 
-                                    <button type="submit" onClick={this.sendMessage}>&#9658;</button>
+                                    <button style={{color: this.state.theme ? '#000' : '#fff'}} type="submit" onClick={this.sendMessage}>&#9658;</button>
                                 </div>
                             </div>
                         </div>
                     ) : (
                         <div>
-                            <h1>You are not logged</h1>
+                            <h1 className={
+                                this.state.theme ? 'light' : 'dark'
+                            }>You are not logged</h1>
                         </div>
                     )
                 }

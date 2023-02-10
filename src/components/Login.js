@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios"
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 // import { useNavigate } from 'react-router-dom'
 import {ToastContainer,toast} from "react-toastify"
 import { FaMoon } from 'react-icons/fa';
@@ -52,7 +52,7 @@ class Login extends Component {
         //   username: username
         // })
 
-        // navigate('/chat')
+        this.props.navigate('/chat')
       }
       }catch(e){
         console.log(e)
@@ -65,6 +65,8 @@ class Login extends Component {
       await this.setState({
         theme: !this.state.theme
       })
+      localStorage.setItem('theme', this.state.theme)
+      
       if(this.state.theme === true){
         document.body.style.background = '#fff'
         console.log('white')
@@ -73,17 +75,22 @@ class Login extends Component {
         console.log('dark')
       }
     }
-
-  
-  
   componentWillMount(){
-    if(this.state.theme === true){
-      document.body.style.background = '#fff'
-      console.log('white')
+    if(localStorage.getItem('theme') === null){
+      localStorage.setItem('theme', this.state.theme)
     }else{
-      document.body.style.background = '#060A13'
-      console.log('dark')
+      this.setState({
+        theme: (localStorage.getItem('theme') === 'true')
+      })
+      if(this.state.theme === true){
+        document.body.style.background = '#fff'
+        console.log('white')
+      }else{
+        document.body.style.background = '#060A13'
+        console.log('dark')
+      }
     }
+    
   }
 
 
@@ -113,7 +120,7 @@ class Login extends Component {
                 className='login-form-inp'
                 onChange={(e)=>{
                   this.setState({
-                    username: e.target.val
+                    username: e.target.value
                   })
                 }}
               />
@@ -124,12 +131,12 @@ class Login extends Component {
                 className='login-form-inp'
                 onChange={(e)=>{
                   this.setState({
-                    password: e.target.val
+                    password: e.target.value
                   })
                 }}
               />
             </form>
-            <Link className='btn-form' type='button' to={'/chat'} onClick={this.onSubmitForm} username={this.state.username}>Log in</Link>
+            <Link className='btn-form' type='button' onClick={this.onSubmitForm} username={this.state.username}>Log in</Link>
           </div>
         </div>
         <ToastContainer />
@@ -138,4 +145,10 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default function MainLogin (props){
+  const navigate = useNavigate()
+
+  return <Login socket={props.socket} navigate={navigate} />
+}
+
+// export default Login;

@@ -18,6 +18,8 @@ html,body{
   box-sizing: border-box;
 }
 
+/* -----------------------------------------------------THEME---------------------------------------------- */
+
 .light{
   background-color: #fff;
   color: #000;
@@ -35,18 +37,41 @@ html,body{
 
 .dark{
   background-color: #060A13;
-  color: rgb(213, 213, 213);
+  color: #fff;
   transition: 800ms;
 }
 
 .dark input{
-  color: rgb(213, 213, 213);
+  color: #fff;
 }
 
 .dark a{
-  color: rgb(213, 213, 213);
+  color: #fff;
   text-align: center;
 }
+
+.inp-dark{
+  background-color: #2E4392;
+  color: #fff;
+}
+
+.inp-light{
+  background-color: #f5f5f5;
+  color: #000;
+}
+
+.c-light{
+  background-color: #0d92f9;
+}
+
+.c-dark{
+  background-color: #193166;
+}
+
+.inp-dark::placeholder{
+  color: #BEBEBE;
+}
+/* ------------------------------------------------------------------------------------------------------------ */
 
 h2{
   padding: 0;
@@ -74,7 +99,7 @@ p{
 }
 
 ::-webkit-scrollbar-track{
-  background-color: #fff;
+  background-color: transparent;
   padding: 10%;
 }
 
@@ -116,7 +141,7 @@ p{
 .theme{
   display: inline-block;
   background: transparent;
-  color: rgb(213, 213, 213);
+  color: #fff;
   border: none;
   padding: 0;
   margin: 0;
@@ -176,13 +201,10 @@ p{
   border-bottom: 1px solid #2152BE;
 }
 
-.btn-form{
-}
-
 /* --------------------------------------------contacts-------------------------------------- */
 
 .main-contacts{
-  background-color: #0d92f9;
+  /* background-color: #0d92f9; */
   box-sizing: border-box;
 }
 
@@ -207,11 +229,10 @@ p{
 
 .main-chatting{
   display: grid;
-  grid-template-columns: 20% 80%;
+  /* grid-template-columns: 20% 80%; */
   width: 100%;
-  height: 100%;
+  height: 100svh;
   background-color: #fff;
-  color: #000;
 }
 
 .chatting-div{
@@ -223,15 +244,12 @@ p{
 
 .message-header{
   width: 100%;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 0.4fr 1.5fr 0.4fr;
+  text-align: center;
   align-items: center;
-  padding: 0.5% 1.5%;
+  padding: 1% 1.5%;
   box-sizing: border-box;
-}
-
-.message-header a{
-  color: black;
 }
 
 /* --------------------------------------message-block---------------------------------- */
@@ -282,25 +300,25 @@ p{
   box-sizing: border-box;
   width: 100%;
   max-height: 30svh;
-  padding: 0.5% 0.5% 1% 0.5%;
-  background-color: #f5f5f5;
+  padding: 1% 0;
 }
 
 .message-form textarea{
   align-self: end;
   background-color: transparent;
-  color: black;
   width: 94.5%;
   border: none;
+  padding: 0.2% 1%;
   outline: none;
   font-size: 16px;
   word-break:break-all;
   resize: none;
-  max-height: 30vh;
+  box-sizing: border-box;
+  max-height: 30svh;
 }
 
 .message-form button{
-  padding: 1% 0 0 0;
+  padding: 0.2% 0 0 0;
   font-size: 18px;
   background-color: transparent;
   border: none;
@@ -325,21 +343,16 @@ p{
 }
 
 @media screen and (max-width:800px){
-  
-  .container{
-    padding: 0;
-  }
-  
   .login-form{
     width: 100%;
   } 
 
-  .main-chatting{
+  /* .main-chatting{
     grid-template-columns: 100%;
   }
   .main-contacts{
     display: none;
-  }
+  } */
 
   .message{
     padding: 0 0 0 2%;
@@ -351,9 +364,8 @@ p{
   }
 
   .message-form textarea{
-    height: 5svh;
-    line-height: 5svh;
-    resize: none;
+    box-sizing: border-box;
+    padding: 2% 0;
   }
 
 }
@@ -395,11 +407,6 @@ p{
     padding: 0 1% 0 3%;
   }
 
-  .message-form textarea{
-    height: 6svh;
-    line-height: 5svh;
-    resize: none;
-  }
 
   .message-form button{
     height: 100%;
@@ -431,18 +438,22 @@ p{
     font-size: 15px;
   }
 
+  .message-header a{
+    font-size: 15px;
+  }
+
   .message{
-    padding: 2% 0 2% 3.5%;
+    padding: 2% 0 0 3.5%;
   }
 
   .ins-message-form{
     align-items: center;
     padding: 0 1.5% 0 3.5%;
   }
+}
 
-  .message-form textarea{
-    height: 5svh;
-    line-height: 5svh;
-    resize: none;
+@media screen and (max-width: 350px) {
+  .message-header a , .message-header button{
+    font-size: 12px;
   }
 }

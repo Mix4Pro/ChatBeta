@@ -4,11 +4,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-let setSize = () =>{
-  document.body.style.height = `${window.innerHeight}px`
-  console.log(document.body.style.height)
-}
-window.addEventListener('resize', setSize)
+// let setSize = () =>{
+//   document.body.style.height = `${window.innerHeight}px`
+//   console.log(document.body.style.height)
+// }
+// window.addEventListener('resize', setSize)
 root.render(
   <React.StrictMode>
     <App />
