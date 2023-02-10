@@ -140,8 +140,10 @@ p{
   animation-name: border;
   animation-duration: 5s;
   animation-iteration-count: infinite;
+  position: relative;
+  z-index: 100000;
+  background-color: #060A13;
 }
-
 @keyframes border {
   0%{
     border-image: linear-gradient(to right, darkblue, darkorchid) 1;
@@ -415,12 +417,12 @@ p{
   .theme{
     font-size: 12px;
   }
+  .login-header h2{
+    font-size: 18px;
+  }
   .login-header a{
     font-size: 12px;
     font-weight: bold;
-  }
-  .login-form h1{
-    font-size: 15px;
   }
   .login-form input{
     font-size: 15px;
