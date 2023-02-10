@@ -140,9 +140,6 @@ p{
   animation-name: border;
   animation-duration: 5s;
   animation-iteration-count: infinite;
-  position: relative;
-  z-index: 100000;
-  background-color: #060A13;
 }
 @keyframes border {
   0%{
