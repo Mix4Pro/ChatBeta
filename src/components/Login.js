@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import axios from "axios"
 import {Link, useNavigate} from 'react-router-dom'
 // import { useNavigate } from 'react-router-dom'
@@ -145,8 +145,16 @@ class Login extends Component {
   }
 }
 
+
+
 export default function MainLogin (props){
   const navigate = useNavigate()
+  useEffect(()=>{
+    if(localStorage.getItem('username')){
+      console.log(typeof(localStorage.getItem('username')))
+      navigate('/chat')
+    }
+  })
 
   return <Login socket={props.socket} navigate={navigate} />
 }
