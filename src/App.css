@@ -121,6 +121,13 @@ p{
   overflow-y: hidden;
 }
 
+.main-login-div a{
+  transition: 500ms;
+}
+.main-login-div a:hover{
+  opacity: 0.6;
+}
+
 .login-header{
   display: grid;
   grid-template-columns: 0.1fr 1fr 0.1fr;
