@@ -81,7 +81,13 @@ h2{
 }
 a{
   text-decoration: none;
+  transition: 500ms;
 }
+
+a:hover{
+  opacity: 0.6;
+}
+
 p{
   display: inline-block;
   padding: 0;
@@ -198,7 +204,7 @@ p{
   padding: 2% 1%;
   background: transparent;
   border: none;
-  border-bottom: 1px solid red;
+  border-bottom: 1px solid #C5540B;
   outline: none;
   color: rgb(213, 213, 213);
   transition: border-bottom 500ms;
