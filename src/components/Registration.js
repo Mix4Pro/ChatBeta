@@ -107,12 +107,16 @@ class Registration extends Component {
       let username = this.state.username
       let password = this.state.password
       console.log(username , password)
-      await axios.post('https://chatbeta.onrender.com/registration' , {
+      if(password.length >= 8 && password.length <= 20){
+        await axios.post('https://chatbeta.onrender.com/registration' , {
           username , password
-      })
+      } )
 
-      localStorage.setItem("username",username)
-      this.props.navigate('/chat')
+        localStorage.setItem("username",username)
+        this.props.navigate('/chat')
+      }else{
+        toast.error("Password must contain at least 8 characters and 20 characters at most")
+      }
     }catch(e){
       console.log(e)
       toast.error("This user already exists", this.state.toastOptions)

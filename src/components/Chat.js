@@ -23,7 +23,7 @@ class Chat extends Component {
 
     async sendMessage(){
         try{
-            if(this.state.message !== ''){
+            if(this.state.message !== ""){
                 const CurrentMessage = {
                     author: this.state.username,
                     message: this.state.message,
@@ -39,6 +39,7 @@ class Chat extends Component {
                this.props.socket.emit('send_message', CurrentMessage)
    
                console.log(this.props.socket)
+               console.log(this.state.message   )
                this.setState({
                    messages: [...this.state.messages,CurrentMessage]
                })
@@ -129,11 +130,13 @@ class Chat extends Component {
                             </div>
 
                             <div className='message-block'>
-                                <ReactScrollableFeed>
+                                <ReactScrollableFeed className='paddings'>
                                     {
                                         this.state.messages.map((val,i)=>{
                                             return (
-                                                <div className='message' key={i}>
+                                                <div className={
+                                                    this.state.username === val.author ? "message right" : 'message'
+                                                } key={i}>
                                                     <div className='message-author'>
                                                         <p>{val.author}</p>
                                                     </div>

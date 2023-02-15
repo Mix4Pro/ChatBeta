@@ -36,23 +36,28 @@ class Login extends Component {
       let password = this.state.password
       console.log(this.props.socket)
       if(username !== '' && password !== ''){
-        await this.props.socket.emit("login",username)
+        if(password.length >= 8){
+          await this.props.socket.emit("login",username)
 
-        console.log("POST IS SENDING")
-        
-        await axios.post('https://chatbeta.onrender.com' , {
-          username , password
-        })
+          console.log("POST IS SENDING")
+          
+          await axios.post('https://chatbeta.onrender.com' , {
+            username , password
+          })
 
-        console.log("POST IS SENT")
+          console.log("POST IS SENT")
 
-        localStorage.setItem("username",username)
+          localStorage.setItem("username",username)
 
-        // navigate('/chat',{
-        //   username: username
-        // })
+          // navigate('/chat',{
+          //   username: username
+          // })
 
-        this.props.navigate('/chat')
+          this.props.navigate('/chat')
+        }
+        else{
+          toast.error("Password must contain at least 8 characters")
+        }
       }
       }catch(e){
         console.log(e)

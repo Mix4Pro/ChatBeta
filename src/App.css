@@ -242,13 +242,16 @@ p{
 
 .main-chatting{
   display: grid;
-  /* grid-template-columns: 20% 80%; */
   width: 100%;
   height: 100svh;
   background-color: #fff;
 }
 
 .chatting-div{
+  display: grid;
+  grid-template-rows: 5% 85% 12%;
+  row-gap: 1% 10%;
+  height: 100svh;
   position: relative;
   box-sizing: border-box;
 }
@@ -268,19 +271,20 @@ p{
 /* --------------------------------------message-block---------------------------------- */
 
 .message-block{
-  height: 86.5svh;
+  height: 100%;
   box-sizing: border-box;
   margin-top: 1%;
 }
 
 .message{
-  padding: 0.5% 0 1% 1%;
-  word-break: break-all;
+  padding: 0.5% 0 0 1%;
+  word-break: break-word;
 }
 
 
 .message-p{
   display: inline-block;
+  text-align: left;
   width: auto;
   max-width: 40%;
   color: white;
@@ -324,7 +328,7 @@ p{
   padding: 0.2% 1%;
   outline: none;
   font-size: 16px;
-  word-break:break-all;
+  word-break:break-word;
   resize: none;
   box-sizing: border-box;
   max-height: 30svh;
@@ -356,9 +360,16 @@ p{
 }
 
 @media screen and (max-width:800px){
+  ::-webkit-scrollbar{
+    width: 2px;
+  }
   .login-form{
     width: 100%;
   } 
+  .right{
+    text-align: right;
+    padding-right: 10%;
+  }
 
   /* .main-chatting{
     grid-template-columns: 100%;
@@ -368,7 +379,7 @@ p{
   } */
 
   .message{
-    padding: 0 0 0 2%;
+    padding: 1.5% 2% 0 2%;
   }
 
   .ins-message-form{
@@ -408,7 +419,7 @@ p{
   }
 
   .message{
-    padding: 2% 0 2% 3%;
+    padding: 2% 2% 2% 3%;
   }
 
   .message-p{
@@ -456,7 +467,7 @@ p{
   }
 
   .message{
-    padding: 2% 0 0 3.5%;
+    padding: 2% 2% 0 3.5%;
   }
 
   .ins-message-form{
