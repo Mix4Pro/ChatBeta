@@ -26,7 +26,7 @@ class Chat extends Component {
         messages: [],
         theme: true,
         image: '',
-        tempCurrentMessage: ''
+        tempCurrentMessage: []
     }
 
     async sendMessage(e){
@@ -63,18 +63,19 @@ class Chat extends Component {
                 this.inputField.current.value = ""
                 this.inputImg.current.value = ""
                 let {author,message,date,image} = CurrentMessage
+                this.setState({
+                    messages: [...this.state.messages,CurrentMessage]
+                })
                 console.log('GOING...')
+                console.log(image)
                 await axios.post('https://chatbeta.onrender.com/chat-insert-message', {  
                     author,message,date,image
                 })
                 console.log(CurrentMessage)
-                this.setState({
-                    messages: [...this.state.messages,CurrentMessage]
-                },()=>{
-                    this.setState({message: '',image: ''})
-                    this.props.socket.emit('send_message', CurrentMessage)
-                    return this.state.messages
-                })
+                
+
+                this.setState({message: '',image: ''})
+                this.props.socket.emit('send_message', CurrentMessage)
 
                 console.log(this.state.messages)
             }
@@ -85,7 +86,7 @@ class Chat extends Component {
 
     handleImageChange(e){
         this.setState({
-            image: e.target.files[0]
+            image : e.target.files[0]
 
         })
         console.log(this.state.image)
@@ -173,11 +174,11 @@ class Chat extends Component {
                                                         this.state.username === val.author ? 'me' : 'another'
                                                     }>
                                                     <a className={
-                                                        val.img !== null && this.state.tempCurrentMessage.image !== null ? "message-a" : "hide"
-                                                    } href={val.img} >
+                                                        val.image !== undefined && val.image !== null ? "message-a" : "hide"
+                                                    } href={val.image} >
                                                         <img className={
-                                                            val.img !== null && this.state.tempCurrentMessage.image !== null ? "message-a-img" : "hide"
-                                                        } src={val.img || this.state.tempCurrentMessage.image} alt='' />
+                                                            val.image !== undefined && val.image !== null ? "message-a-img" : "hide"
+                                                        } src={val.image} alt='' />
                                                     </a>
                                                     
                                                     <p>{val.message}</p>
@@ -196,9 +197,9 @@ class Chat extends Component {
                             
 
                             <div className='message-form'>
-                            <div className='selected-img-div'>
-                                    
-                            </div>
+                            {/* <div className='selected-img-div'>
+                                    <h1>HELLO</h1>
+                            </div> */}
                                 <form className={
                                     this.state.theme ? 'ins-message-form inp-light' : 'ins-message-form inp-dark'
                                 }>
