@@ -64,7 +64,7 @@ class Chat extends Component {
                 this.inputImg.current.value = ""
                 let {author,message,date,image} = CurrentMessage
                 console.log('GOING...')
-                await axios.post('http://localhost:3001/chat-insert-message', {  
+                await axios.post('https://chatbeta.onrender.com/chat-insert-message', {  
                     author,message,date,image
                 })
                 console.log(CurrentMessage)
@@ -124,7 +124,7 @@ class Chat extends Component {
 
             console.log(typeof this.state.username) 
             
-            let messagesFromData = await axios.get('http://localhost:3001/chat-get-messages')
+            let messagesFromData = await axios.get('https://chatbeta.onrender.com/chat-get-messages')
 
             console.log("messages are gotten")
 
