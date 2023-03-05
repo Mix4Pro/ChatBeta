@@ -84,9 +84,10 @@ class Chat extends Component {
     }
 
     handleImageChange(e){
-        this.setState(
-            this.state.image = e.target.files[0]
-        )
+        this.setState({
+            image: e.target.files[0]
+
+        })
         console.log(this.state.image)
     }
 
@@ -192,7 +193,12 @@ class Chat extends Component {
                                 </ReactScrollableFeed>
                             </div>
 
+                            
+
                             <div className='message-form'>
+                            <div className='selected-img-div'>
+                                    
+                            </div>
                                 <form className={
                                     this.state.theme ? 'ins-message-form inp-light' : 'ins-message-form inp-dark'
                                 }>
