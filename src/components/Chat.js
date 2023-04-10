@@ -3,6 +3,7 @@ import React, { Component} from 'react';
 import ReactScrollableFeed from "react-scrollable-feed";
 import axios from "axios";
 import { FaMoon } from 'react-icons/fa';
+import { BiSend } from "react-icons/bi";
 import {FaPaperclip} from 'react-icons/fa'
 import { Link } from 'react-router-dom';
 import {storage} from "../firebase"
@@ -227,7 +228,7 @@ class Chat extends Component {
                                         <input id="inp-img" type='file' onChange={(e)=>{this.handleImageChange(e)}} ref={this.inputImg} accept="image/*"/>
                                     </div>
                                     <div className='ins-div-message-form'>
-                                        <button className='btn-send-message' style={{color: this.state.theme ? '#000' : '#fff'}} type="submit" onClick={(e)=>this.sendMessage(e)}>&#9658;</button>
+                                        <button className='btn-send-message' style={{color: this.state.theme ? '#000' : '#fff'}} type="submit" onClick={(e)=>this.sendMessage(e)}><BiSend /></button>
                                     </div>
 
                                 </form>
