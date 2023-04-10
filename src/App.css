@@ -249,8 +249,9 @@ p{
 
 .chatting-div{
   display: grid;
-  grid-template-rows: 5% 85% 12%;
-  row-gap: 1% 10%;
+  grid-template-rows: 5% 85% 10%;
+  /* row-gap: 1% 1% 0; */
+  padding: 0;
   height: 100svh;
   position: relative;
   box-sizing: border-box;
@@ -375,7 +376,6 @@ p{
   background-color: transparent;
   border: none;
   transition: color 300ms;
-  /* align-self: end; */
 }
 
 .btn-send-message:hover{
@@ -390,7 +390,7 @@ p{
 
 @media screen and (max-width: 900px) {
   .login-form-inner-div{
-    width: 50svw;
+    width: 50svw
   }
 }
 
@@ -521,10 +521,22 @@ p{
     box-sizing: border-box;
     padding: 4% 0;
   }
+
+  .btn-send-message{
+    padding: 0;
+  }
 }
 
 @media screen and (max-width: 350px) {
   .message-header a , .message-header button{
     font-size: 12px;
+  }
+  .ins-message-form{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 1% 0 3%;
+  }
+  .btn-send-message{
+    height: 100%;
   }
 }
