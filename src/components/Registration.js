@@ -34,7 +34,7 @@ class Registration extends Component {
       let password = this.state.password
       console.log(username , password)
       if(password.length >= 8 && password.length <= 20){
-        await axios.post('http://localhost:3001/registration' , {
+        await axios.post('https://chatbeta.onrender.com/registration' , {
           username , password
       } )
 

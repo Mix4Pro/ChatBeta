@@ -46,7 +46,7 @@ class Login extends Component {
 
           console.log("POST IS SENDING")
           
-          await axios.post('http://localhost:3001' , {
+          await axios.post('https://chatbeta.onrender.com' , {
             username , password
           })
 
