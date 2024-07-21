@@ -8,6 +8,7 @@ import {FaPaperclip} from 'react-icons/fa'
 import { Link } from 'react-router-dom';
 import {storage} from "../firebase"
 import {ref,uploadBytes,getDownloadURL} from "firebase/storage"
+import Loading from '../modules/Loading';
 
 
 class Chat extends Component {
@@ -27,7 +28,8 @@ class Chat extends Component {
         messages: [],
         theme: true,
         image: '',
-        tempCurrentMessage: []
+        tempCurrentMessage: [],
+        isLoading: true
     }
 
     async sendMessage(e){
@@ -69,10 +71,12 @@ class Chat extends Component {
                 })
                 console.log('GOING...')
                 console.log(image)
-                await axios.post('https://chatbeta.onrender.com/chat-insert-message', {  
+                await axios.post('http://localhost:3001/chat-insert-message', {  
                     author,message,date,image
                 })
                 console.log(CurrentMessage)
+
+                // https://chatbeta.onrender.com/chat-insert-message
                 
 
                 this.setState({message: '',image: ''})
@@ -127,7 +131,9 @@ class Chat extends Component {
 
             console.log(typeof this.state.username) 
             
-            let messagesFromData = await axios.get('https://chatbeta.onrender.com/chat-get-messages')
+            let messagesFromData = await axios.get('http://localhost:3001/chat-get-messages')
+
+            // https://chatbeta.onrender.com/chat-get-messages
 
             console.log("messages are gotten")
 
@@ -136,6 +142,11 @@ class Chat extends Component {
             this.setState({
                 messages: messagesFromData.data
             })
+
+            this.setState({
+                isLoading: false
+            })
+            console.log(this.isLoading)
         }catch(err){
             this.setState({
                 username: undefined
@@ -160,7 +171,8 @@ class Chat extends Component {
                                 <Link to='/' onClick={this.signOut}>Sign Out</Link>
                             </div>
 
-                            <div className='message-block'>
+                            {this.state.isLoading ? <Loading /> : (
+                                <div className='message-block'>
                                 <ReactScrollableFeed className='paddings'>
                                     {
                                         this.state.messages.map((val,i)=>{
@@ -194,6 +206,7 @@ class Chat extends Component {
                                     }
                                 </ReactScrollableFeed>
                             </div>
+                            )}
 
                             
 

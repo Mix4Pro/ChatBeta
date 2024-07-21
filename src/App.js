@@ -4,6 +4,7 @@ import MainLogin from './components/Login';
 import Chat from "./components/Chat"
 import {BrowserRouter as Router , Routes , Route} from 'react-router-dom'
 import MainRegistration from './components/Registration';
+import Loading from './modules/Loading';
 const socket = io.connect("https://chatbeta.onrender.com");
 // let navigation;
 function App() {
@@ -20,6 +21,9 @@ function App() {
           } />
           <Route path='/registration' element={
             <MainRegistration />
+          } />
+          <Route path="/loading" element={
+            <Loading />
           } />
         </Routes>
       </Router>

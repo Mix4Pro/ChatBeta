@@ -5,6 +5,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import {ToastContainer,toast} from "react-toastify"
 import { FaMoon } from 'react-icons/fa';
 import 'react-toastify/dist/ReactToastify.css';
+import Loading from '../modules/Loading';
 
 
 
@@ -27,11 +28,15 @@ class Login extends Component {
       autoClose: 8000,
       pauseOnHover: true,
       draggable: true,
-    }
+    },
+    isLoading: false
   }
 
   async onSubmitForm(e){
     try{
+      this.setState({
+        isLoading: true
+      })
       let username = this.state.username
       let password = this.state.password
       console.log(this.props.socket)
@@ -41,7 +46,7 @@ class Login extends Component {
 
           console.log("POST IS SENDING")
           
-          await axios.post('https://chatbeta.onrender.com' , {
+          await axios.post('http://localhost:3001' , {
             username , password
           })
 
@@ -114,7 +119,7 @@ class Login extends Component {
             <Link className='btn-sign-up' to='/registration'>Sign Up</Link>
         </div>
 
-        <div className='login-form-div'>
+        {this.state.isLoading ? <Loading /> : (<div className='login-form-div'>
           <div className='login-form-inner-div'>
             <h2>Log In</h2>
             <form className='form' action='/' method='POST' onSubmit={()=> this.onSubmitForm}>
@@ -143,7 +148,7 @@ class Login extends Component {
             </form>
             <Link className='btn-form' type='button' onClick={this.onSubmitForm} username={this.state.username}>Log in</Link>
           </div>
-        </div>
+        </div>)}
         <ToastContainer />
       </div>
     );
