@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import {ToastContainer,toast} from "react-toastify"
 import { FaMoon } from 'react-icons/fa';
 import 'react-toastify/dist/ReactToastify.css';
+import Loading from '../modules/Loading'
 
 class Registration extends Component {
   constructor(props){
@@ -25,7 +26,8 @@ class Registration extends Component {
       autoClose: 8000,
       pauseOnHover: true,
       draggable: true,
-    }
+    },
+    isLoading: false
   }
 
   async RegUser(e){
@@ -33,6 +35,7 @@ class Registration extends Component {
       let username = this.state.username
       let password = this.state.password
       console.log(username , password)
+      this.setState({isLoading: true})
       if(password.length >= 8 && password.length <= 20){
         await axios.post('https://chatbeta.onrender.com/registration' , {
           username , password
@@ -51,7 +54,6 @@ class Registration extends Component {
 
     async changeTheme(){
       await this.setState({
-
         theme: !this.state.theme
       })
       localStorage.setItem('theme', this.state.theme)
@@ -98,36 +100,40 @@ class Registration extends Component {
             <Link className='btn-sign-up' to='/'>Log In</Link>
         </div>
 
-        <div className='login-form-div'>
-          <div className='login-form-inner-div'>
-            <h2>Sign Up</h2>
-            <form className='form' action='/' method='POST' onSubmit={()=> this.RegUser}>
-              <input 
-                type='text' 
-                ref={this.inputs}
-                placeholder="Username..." 
-                className='login-form-inp'
-                onChange={(e)=>{
-                  this.setState({
-                    username: e.target.value
-                  })
-                }}
-              />
+        {
+          this.state.isLoading ? <Loading /> : (
+            <div className='login-form-div'>
+              <div className='login-form-inner-div'>
+                <h2>Sign Up</h2>
+                <form className='form' action='/' method='POST' onSubmit={()=> this.RegUser}>
+                  <input 
+                    type='text' 
+                    ref={this.inputs}
+                    placeholder="Username..." 
+                    className='login-form-inp'
+                    onChange={(e)=>{
+                      this.setState({
+                        username: e.target.value
+                      })
+                    }}
+                  />
 
-              <input 
-                type='password' 
-                placeholder="Password..." 
-                className='login-form-inp'
-                onChange={(e)=>{
-                  this.setState({
-                    password: e.target.value
-                  })
-                }}
-              />
-            </form>
-            <Link className='btn-form' type='button' onClick={this.RegUser} username={this.state.username}>Sign Up</Link>
-          </div>
-        </div>
+                  <input 
+                    type='password' 
+                    placeholder="Password..." 
+                    className='login-form-inp'
+                    onChange={(e)=>{
+                      this.setState({
+                        password: e.target.value
+                      })
+                    }}
+                  />
+                </form>
+                <Link className='btn-form' type='button' onClick={this.RegUser} username={this.state.username}>Sign Up</Link>
+              </div>
+            </div>
+          )
+        }
         <ToastContainer />
       </div>
     );
