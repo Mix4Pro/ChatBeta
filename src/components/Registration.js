@@ -45,12 +45,11 @@ class Registration extends Component {
         this.props.navigate('/chat')
       }else{
         toast.error("Password must contain at least 8 characters and 20 characters at most")
-        this.setState({isLoading: false})
       }
     }catch(e){
       console.log(e)
-      toast.error("This user already exists", this.state.toastOptions)
       this.setState({isLoading: false})
+      toast.error("This user already exists", this.state.toastOptions)
     }
     }
 
