@@ -51,13 +51,14 @@ class Chat extends Component {
                         }).catch(err => console.log(err))
                     })
                 }
+
+                let dataMinutes = new Date(Date.now()).getMinutes()
                 
                 const CurrentMessage = {
                     author: this.state.username,
                     message: this.state.message,
                     date: new Date(Date.now()).getHours() +
-                    ":" +
-                    new Date(Date.now()).getMinutes(),
+                    ":" + (dataMinutes < 10 ? '0' + dataMinutes : dataMinutes),
                     image: image_url
                 }
                 this.setState({
@@ -71,7 +72,7 @@ class Chat extends Component {
                 })
                 console.log('GOING...')
                 console.log(image)
-                await axios.post('https://chatbeta.onrender.com/chat-insert-message', {  
+                await axios.post('http://localhost:3001/chat-insert-message', {  
                     author,message,date,image
                 })
                 console.log(CurrentMessage)
@@ -131,7 +132,7 @@ class Chat extends Component {
 
             console.log(typeof this.state.username) 
             
-            let messagesFromData = await axios.get('https://chatbeta.onrender.com/chat-get-messages')
+            let messagesFromData = await axios.get('http://localhost:3001/chat-get-messages')
 
             // https://chatbeta.onrender.com/chat-get-messages
 
@@ -183,18 +184,20 @@ class Chat extends Component {
                                                     <div className='message-author'>
                                                         <p>{val.author}</p>
                                                     </div>
-                                                    <div className='message-p'  id={
+                                                    <div className={
+                                                        val.image !== undefined && val.image !== null ? 'message-p': 'message-p'
+                                                    }  id={
                                                         this.state.username === val.author ? 'me' : 'another'
                                                     }>
-                                                    <a className={
-                                                        val.image !== undefined && val.image !== null ? "message-a" : "hide"
-                                                    } href={val.image} >
-                                                        <img className={
-                                                            val.image !== undefined && val.image !== null ? "message-a-img" : "hide"
-                                                        } src={val.image} alt='' />
-                                                    </a>
-                                                    
-                                                    <p>{val.message}</p>
+                                                        <a className={
+                                                            val.image !== undefined && val.image !== null ? "message-a" : "hide"
+                                                        } href={val.image} >
+                                                            <img className={
+                                                                val.image !== undefined && val.image !== null ? "message-a-img" : "hide"
+                                                            } src={val.image} alt=''/>
+                                                        </a>
+                                                        
+                                                        <p>{val.message}</p>
                                                     </div>
 
                                                     <div className='message-date'>
@@ -248,10 +251,17 @@ class Chat extends Component {
                             </div>
                         </div>
                     ) : (
-                        <div>
-                            <h1 className={
-                                this.state.theme ? 'light' : 'dark'
-                            }>You are not logged</h1>
+                        <div className={
+                            this.state.theme ? "log-in-error-main light" : "log-in-error-main dark"
+                        }>
+                            <div className='log-in-error-inner'>
+                                <h1 className={
+                                    this.state.theme ? 'light' : 'dark'
+                                }>You are not logged</h1>
+
+                                <a href='/'>Log In</a>
+                                <a href='/registration'>Sign Up</a>
+                            </div>
                         </div>
                     )
                 }

@@ -98,6 +98,10 @@ class Login extends Component {
       }else{
         document.body.style.background = '#060A13'
         console.log('dark')
+        if(new Date(Date.now()).getMinutes() < 10){
+          console.log(`0${new Date(Date.now()).getMinutes()}`)
+        }
+        console.log(new Date(Date.now()).getMinutes())
       }
     }
     
@@ -161,7 +165,6 @@ export default function MainLogin (props){
   const navigate = useNavigate()
   useEffect(()=>{
     if(localStorage.getItem('username')){
-      console.log(typeof(localStorage.getItem('username')))
       navigate('/chat')
     }
   })

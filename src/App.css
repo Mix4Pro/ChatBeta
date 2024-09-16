@@ -16,7 +16,7 @@ body{
 .container{
   width: 100svw;
   box-sizing: border-box;
-}
+} 
 
 /* -----------------------------------------------------THEME---------------------------------------------- */
 
@@ -283,6 +283,7 @@ p{
 }
 
 
+
 .message-p{
   display: inline-block;
   text-align: left;
@@ -293,16 +294,31 @@ p{
   word-wrap: break-word;
   padding: 0.8%;
   border-radius: 10px 10px 10px 0;
+  margin-top: 0.5%;
 }
 
-.message-author{
-  padding: 0 0 0.2% 0;
+.message-a:hover{
+  opacity: 1;
+}
+
+.message-a-img{
+  width: 100%;
+}
+
+.hide{
+  display: none;
+}
+
+.less-border{
+  padding: 0%;
+  width: 200px;
 }
 
 
 .message-date p{
   color: gray;
   font-size: 80%;
+  margin-bottom: 0.5%;
 }
 
 /* ---------------------------------------message-form---------------------------------- */
@@ -325,18 +341,6 @@ p{
 .ins-div-message-form{
   display: flex;
   align-items: center;
-}
-
-.message-a:hover{
-  opacity: 1;
-}
-
-.message-a-img{
-  width: 100%;
-}
-
-.hide{
-  display: none;
 }
 
 .message-form textarea{
@@ -381,6 +385,27 @@ p{
 .btn-send-message:hover{
   cursor: pointer;
   color: #0d92f9;
+}
+
+/* --------------------------------------log-in-error------------------------------ */
+
+.log-in-error-main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1% 1.5%;
+}
+
+.log-in-error-inner{
+  text-align: center;
+}
+
+.log-in-error-inner h1{
+  padding: 5% 0;
+}
+
+.log-in-error-inner a{
+  padding: 0 10%;
 }
 
 
