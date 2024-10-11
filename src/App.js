@@ -6,7 +6,6 @@ import {BrowserRouter as Router , Routes , Route} from 'react-router-dom'
 import MainRegistration from './components/Registration';
 import Loading from './modules/Loading';
 const socket = io.connect("https://chatbeta.onrender.com");
-// let navigation;
 function App() {
   return (
     <>

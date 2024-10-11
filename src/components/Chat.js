@@ -58,7 +58,7 @@ class Chat extends Component {
                     author: this.state.username,
                     message: this.state.message,
                     date: new Date(Date.now()).getHours() +
-                    ":" + (dataMinutes < 10 ? '0' + dataMinutes : dataMinutes),
+                    ":" + (dataMinutes < 10 && dataMinutes >= 1 ? '0' + dataMinutes : dataMinutes),
                     image: image_url
                 }
                 this.setState({
@@ -72,7 +72,7 @@ class Chat extends Component {
                 })
                 console.log('GOING...')
                 console.log(image)
-                await axios.post('https://chatbeta.onrender.com/chat-insert-message', {  
+                await axios.post(`${process.env.REACT_APP_BACK_END}/chat-insert-message`, {  
                     author,message,date,image
                 })
                 console.log(CurrentMessage)
@@ -132,7 +132,7 @@ class Chat extends Component {
 
             console.log(typeof this.state.username) 
             
-            let messagesFromData = await axios.get('https://chatbeta.onrender.com/chat-get-messages')
+            let messagesFromData = await axios.get(`${process.env.REACT_APP_BACK_END}/chat-get-messages`)
 
             // https://chatbeta.onrender.com/chat-get-messages
 
@@ -172,7 +172,7 @@ class Chat extends Component {
                                 <Link to='/' onClick={this.signOut}>Sign Out</Link>
                             </div>
 
-                            {this.state.isLoading ? <Loading /> : (
+                            {this.state.isLoading ? <Loading color={this.state.theme ? '#060A13' : '#fff'} /> : (
                                 <div className='message-block'>
                                 <ReactScrollableFeed className='paddings'>
                                     {
@@ -185,7 +185,7 @@ class Chat extends Component {
                                                         <p>{val.author}</p>
                                                     </div>
                                                     <div className={
-                                                        val.image !== undefined && val.image !== null ? 'message-p': 'message-p'
+                                                        val.image !== undefined && val.image !== null ? 'message-p less-border': 'message-p'
                                                     }  id={
                                                         this.state.username === val.author ? 'me' : 'another'
                                                     }>
@@ -270,7 +270,7 @@ class Chat extends Component {
     }
 
     componentDidMount(){
-        console.log("THIS IS DID")
+        console.log("THIS IS DID",process.env.REACT_APP_BACK_END)
         this.props.socket.on('recieve_message',async (messages)=>{
             this.setState({
                 messages: [...this.state.messages,messages]

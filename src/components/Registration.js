@@ -37,7 +37,7 @@ class Registration extends Component {
       console.log(username , password)
       this.setState({isLoading: true})
       if(password.length >= 8 && password.length <= 20){
-        await axios.post('https://chatbeta.onrender.com/registration' , {
+        await axios.post(`${process.env.REACT_APP_BACK_END}/registration` , {
           username , password
       } )
 
@@ -102,7 +102,7 @@ class Registration extends Component {
         </div>
 
         {
-          this.state.isLoading ? <Loading /> : (
+          this.state.isLoading ? <Loading color={this.state.theme ? '#060A13' : '#fff'}/> : (
             <div className='login-form-div'>
               <div className='login-form-inner-div'>
                 <h2>Sign Up</h2>

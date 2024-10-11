@@ -3,10 +3,11 @@ import {HashLoader} from 'react-spinners'
 import "./Loading.css"
 
 
-export default function Loading() {
+export default function Loading(props) {
   return (
     <div id="loading">
-        <HashLoader color='#fff' />
+        <HashLoader color={props.color} />
+        {console.log(props)}
     </div>
   )
 }

@@ -46,7 +46,7 @@ class Login extends Component {
 
           console.log("POST IS SENDING")
           
-          await axios.post('https://chatbeta.onrender.com' , {
+          await axios.post(process.env.REACT_APP_BACK_END , {
             username , password
           })
 
@@ -54,7 +54,7 @@ class Login extends Component {
 
           localStorage.setItem("username",username)
 
-          // navigate('/chat',{
+          // navigate('/chat',{1
           //   username: username
           // })
 
@@ -62,11 +62,17 @@ class Login extends Component {
         }
         else{
           toast.error("Password must contain at least 8 characters")
+          this.setState({
+            isLoading: false
+          })
         }
       }
       }catch(e){
         console.log(e)
         toast.error("Username or Password is incorrect.", this.state.toastOptions)
+        this.setState({
+          isLoading: false
+        })
       }
       e.preventDefault()
     }
@@ -123,7 +129,7 @@ class Login extends Component {
             <Link className='btn-sign-up' to='/registration'>Sign Up</Link>
         </div>
 
-        {this.state.isLoading ? <Loading /> : (<div className='login-form-div'>
+        {this.state.isLoading ? <Loading color={this.state.theme ? '#060A13' : '#fff'} /> : (<div className='login-form-div'>
           <div className='login-form-inner-div'>
             <h2>Log In</h2>
             <form className='form' action='/' method='POST' onSubmit={()=> this.onSubmitForm}>

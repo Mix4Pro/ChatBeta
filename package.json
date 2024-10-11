@@ -8,6 +8,8 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.2",
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.5",
     "filestack-react": "^4.0.1",
     "firebase": "^9.17.1",
     "http": "0.0.1-security",
